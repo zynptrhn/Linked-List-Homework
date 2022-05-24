@@ -1,25 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node{
+typedef struct node{
     int sayi;
     struct node * next;
-};
+}Node;
 
-  typedef struct node newnode;
-  newnode*head;
-  newnode*cift_ekle(newnode*head,int n);
-  newnode*tek_ekle(newnode*p,int n);
+  Node*head,*p,*q;
+
+  Node*cift_ekle(Node*head,int n);
+  Node*tek_ekle(Node*p,int n);
   void traverselist(head);
 
 int main(){
     int n;
-    newnode* p;
     printf("sayi girin: ");
     scanf("%d",&n);
 
-    head=(newnode*)malloc(sizeof(newnode*));
-    head->next=(newnode*)malloc(sizeof(newnode*));
+    head=(Node*)malloc(sizeof(Node*));
+    head->next=(Node*)malloc(sizeof(Node*));
 
     if(n!=-1){
         head->sayi=n;
@@ -41,26 +40,24 @@ int main(){
     return 0;
 }
 
-newnode*cift_ekle(newnode*head,int n){
-    newnode*q;
-    q=(newnode*)malloc(sizeof(newnode*));
-    q->next=(newnode*)malloc(sizeof(newnode*));
+Node*cift_ekle(Node*head,int n){
+    q=(Node*)malloc(sizeof(Node*));
+    q->next=(Node*)malloc(sizeof(Node*));
     q->next=head;
     q->sayi=n;
 return q;}
 
-newnode*tek_ekle(newnode*p,int n){
-    newnode*q;
-    q=(newnode*)malloc(sizeof(newnode*));
-    q->next=(newnode*)malloc(sizeof(newnode*));
+Node*tek_ekle(Node*p,int n){
+    
+    q=(Node*)malloc(sizeof(Node*));
+    q->next=(Node*)malloc(sizeof(Node*));
     p->next=q;
     q->next=NULL;
     q->sayi=n;
     return q;
    }    
 
-void traverselist(newnode* head){
-    newnode*p;
+void traverselist(Node* head){
     p=head;
     system("cls");
     while(p!=NULL){
