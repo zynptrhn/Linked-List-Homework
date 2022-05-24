@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node{
+typedef struct node{
     int sayi;
     struct node *next;
-};
+}node;
 
-typedef struct node newnode;
-newnode *head,*last;
+node *head,*last;
 
-newnode*yer_degistir(newnode*head);
-newnode*liste_olustur();
-void traverselist(newnode*head);
+node*yer_degistir(node*head);
+node*liste_olustur();
+void traverselist(node*head);
 
 int main(){
     head=liste_olustur();
@@ -22,19 +21,19 @@ int main(){
      return 0;
 }
 
-newnode* liste_olustur(){
-    newnode*p;
+node* liste_olustur(){
+    node*p;
     int n,k;
     printf("kac sayi girilecek : ");
     scanf("%d",&n);
 
     for(k=0;k<n;k++){
         if(k==0){
-            head=(newnode*)malloc(sizeof(newnode));
+            head=(node*)malloc(sizeof(node));
             p=head;
         }
         else{
-            p->next=(newnode*)malloc(sizeof(newnode));
+            p->next=(node*)malloc(sizeof(node));
             p=p->next;
         }
         printf("sayi girin: ");
@@ -46,8 +45,8 @@ newnode* liste_olustur(){
 
 }
 
- newnode *yer_degistir(newnode*head){
-    newnode*p,*q;
+ node *yer_degistir(node*head){
+    node*p,*q;
     p=head;
     while(p!=NULL){
         if(p->next==NULL && p==head){
@@ -68,8 +67,8 @@ newnode* liste_olustur(){
     return p;}
     
     
-void traverselist(newnode*head){
-    newnode*p;
+void traverselist(node*head){
+    node*p;
     p=head;
     while(p!=NULL){
         printf("%4d",p->sayi);
