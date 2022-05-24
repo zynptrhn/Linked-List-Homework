@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node{
+typedef struct node{
     int sayi;
     struct node *next;
-};
+}node;
+   node *head,*last,*p,*q;
 
-   typedef struct node newnode;
-   newnode *head,*last;
-   newnode*changefirstandlast(newnode*head);
-   newnode*listolustur();
-   void traverselist(newnode*head);
+   node*changefirstandlast(node*head);
+   node*listolustur();
+   void traverselist(node*head);
 
 int main(){
  head=listolustur();
@@ -21,19 +20,18 @@ int main(){
   return 0;}
   
   
- newnode* listolustur(){
- newnode*p;
+ node* listolustur(){
  int n,k;
  printf("kac sayi girilecek : ");
  scanf("%d",&n);
 
     for(k=0;k<n;k++){
         if(k==0){
-         head=(newnode*)malloc(sizeof(newnode));
+         head=(node*)malloc(sizeof(node));
           p=head;
         }
         else{
-        p->next=(newnode*)malloc(sizeof(newnode));
+        p->next=(node*)malloc(sizeof(node));
         p=p->next;
         }
         printf("sayi girin: ");
@@ -42,10 +40,8 @@ int main(){
   p->next=NULL;
   return head;}
 
- newnode *changefirstandlast(newnode*head){
- 	
-	newnode*p,*q;
-    p=head;
+ node *changefirstandlast(node*head){
+     p=head;
     while(p!=NULL){
         if(p->next==NULL && p==head){
             break; }
@@ -62,8 +58,7 @@ int main(){
         p=p->next; }
     return p;}
     
- void traverselist(newnode*head){
-    newnode*p;
+ void traverselist(node*head){
     p=head;
     while(p!=NULL){
         printf("%4d",p->sayi);
