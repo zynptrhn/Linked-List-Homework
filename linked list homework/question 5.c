@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
- struct node{
+ typedef struct node{
     int sayi;
     struct node*next;
- };
+ }node;
 
-  typedef struct node newnode;
-  newnode*head;
+  node*head;
 
- newnode* bastaki_dugum_sona(newnode*head);
- newnode* listeolustur();
- void traverselist(newnode*head);
+ node* bastaki_dugum_sona(node*head);
+ node* listeolustur();
+ void traverselist(node*head);
 
 int main(){
     head=listeolustur();
@@ -22,19 +21,19 @@ int main(){
     }
     
 
-    newnode* listeolustur(){
-    newnode*p;
+    node* listeolustur(){
+    node*p;
     int n,i;
     printf("kac sayi gireceksiniz : ");
     scanf("%d",&n);
 
     for(i=0;i<n;i++){
         if(i==0){
-            head=(newnode*)malloc(sizeof(newnode));
+            head=(node*)malloc(sizeof(node));
             p=head;
         }
         else{
-            p->next=(newnode*)malloc(sizeof(newnode));
+            p->next=(node*)malloc(sizeof(node));
             p=p->next;
         }
         printf("Enter number: ");
@@ -43,8 +42,8 @@ int main(){
      p->next=NULL;
     return head;}
 
-newnode*bastaki_dugum_sona(newnode*head){
-    newnode*p,*headnew;
+node*bastaki_dugum_sona(node*head){
+    node*p,*headnew;
     p=head;
     headnew=head->next;
     
@@ -62,8 +61,8 @@ newnode*bastaki_dugum_sona(newnode*head){
     }
     return headnew;}
 
-void traverselist(newnode* head){
-    newnode*p;
+void traverselist(node* head){
+    node*p;
     p=head;
     system("cls");
     while(p!=NULL){
