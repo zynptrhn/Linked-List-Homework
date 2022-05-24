@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
- struct node {
+typedef struct node {
     int sayi;
     struct node * next;
-};
+}node;
 
-typedef struct node newnode;
-newnode *head;
+node *head;
 
-newnode* liste_olustur();
-int traverselist(newnode* head);
-newnode* ortadaki_eleman_sil(newnode* head,int count);
+node* liste_olustur();
+int traverselist(node* head);
+node* ortadaki_eleman_sil(node* head,int count);
 
 
 int main(){
@@ -23,17 +22,17 @@ int count;
    return 0;
 }
 
-newnode* liste_olustur(){
-    newnode*p;
+node* liste_olustur(){
+    node*p;
     int n,i;
     printf("kac sayi gireceksiniz : "); scanf("%d",&n);
     for(i=0;i<n;i++){
         if(i==0){
-            head=(newnode*)malloc(sizeof(newnode));
+            head=(node*)malloc(sizeof(node));
             p=head;
         }
         else{
-            p->next=(newnode*)malloc(sizeof(newnode));
+            p->next=(node*)malloc(sizeof(node));
             p=p->next;
         }
         printf("sayi girin: ");
@@ -45,8 +44,8 @@ newnode* liste_olustur(){
 
 }
 
-int traverselist(newnode*head){
-    newnode*p;
+int traverselist(node*head){
+    node*p;
     p=head;
     int counter;
     while(p!=NULL){
@@ -56,8 +55,8 @@ int traverselist(newnode*head){
     }
     return counter;
 }
-newnode* ortadaki_eleman_sil(newnode* head,int count){
-    newnode *p,*temp;
+node* ortadaki_eleman_sil(node* head,int count){
+    node *p,*temp;
     p=head;
     int i=1;
     int mid=count/2;
